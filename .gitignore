@@ -1,0 +1,7 @@
+build/
+CMakeFiles/
+.vscode/
+a.out
+title.akas.tsv
+title.basics.tsv
+title.ratings.tsv
