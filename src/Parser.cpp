@@ -1,6 +1,6 @@
-#include "/home/scremyda/work/c++/homework/first_hw/headers/Parser.h"
+#include "headers/Parser.h"
 
-int Parser::ParseBasicsFile( std::vector<std::string> argv, Parser & ParseResult )
+int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & ParseResult )
 {
     std::ifstream BasicsFileStream( argv[0] );
     std::getline( BasicsFileStream, ParseResult.ParsedLine_ );
@@ -36,7 +36,7 @@ int Parser::ParseBasicsFile( std::vector<std::string> argv, Parser & ParseResult
     return 0;
 }
 
-int Parser::ParseRatingsFile( std::vector<std::string> argv, Parser & ParseResult )
+int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & ParseResult )
 {
     std::ifstream RatingsFileStream( argv[1] );
     std::getline( RatingsFileStream, ParseResult.ParsedLine_ );
@@ -71,7 +71,7 @@ int Parser::ParseRatingsFile( std::vector<std::string> argv, Parser & ParseResul
     return 0;
 }
 
-int Parser::ParseAkasFile ( std::vector<std::string> argv, Parser & ParseResult )
+int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & ParseResult )
 {
     std::ifstream AkasFileStream( argv[2] );
     std::getline( AkasFileStream, ParseResult.ParsedLine_ );

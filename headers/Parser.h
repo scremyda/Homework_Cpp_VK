@@ -7,11 +7,11 @@
 
 class Parser {
 public:
-    int ParseBasicsFile( std::vector<std::string> argv, Parser & ParseResult );
+    int parseBasicsFile( std::vector<std::string> argv, Parser & ParseResult );
 
-    int ParseRatingsFile( std::vector<std::string> argv, Parser & ParseResult );
+    int parseRatingsFile( std::vector<std::string> argv, Parser & ParseResult );
 
-    int ParseAkasFile ( std::vector<std::string> argv, Parser & ParseResult );
+    int parseAkasFile( std::vector<std::string> argv, Parser & ParseResult );
 
     std::unordered_map<std::string, std::vector<std::string>> GetMap() const;
 

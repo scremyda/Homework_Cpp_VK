@@ -1,7 +1,7 @@
-#include "/home/scremyda/work/c++/homework/first_hw/headers/ErrorProcessing.h"
+#include "headers/ErrorProcessing.h"
 
 
-bool CheckFileOpen ( char * argv )
+bool checkFileOpen( char * argv )
 {
     std::ifstream TestFileStream( argv );
     if (!TestFileStream.is_open())
@@ -15,7 +15,7 @@ bool CheckFileOpen ( char * argv )
     return 0;
 }
 
-bool CheckCommandLneArguments( int argc )
+bool checkCommandLneArguments( int argc )
 {
     if (argc != 5)
     {
@@ -26,7 +26,7 @@ bool CheckCommandLneArguments( int argc )
     return 0;
 }
 
-int CheckFileNamesPositions( char * argv )
+int checkFileNamesPositions( char * argv )
 {
     std::string BasicsFileName = "title.basics.tsv";
     std::string RatingsFileName = "title.ratings.tsv";
@@ -54,11 +54,11 @@ int CheckFileNamesPositions( char * argv )
     return 4;
 }
 
-int RightArgvOrder( char * argv[], std::vector<std::string> & RightArgvOrderVector )
+int rightArgvOrder( char * argv[], std::vector<std::string> & RightArgvOrderVector )
 {
-    int FirstArgvPosition = CheckFileNamesPositions( argv[1] );
-    int SecondArgvPosition = CheckFileNamesPositions( argv[2] );
-    int ThirdArgvPosition = CheckFileNamesPositions( argv[3] );
+    int FirstArgvPosition = checkFileNamesPositions( argv[1] );
+    int SecondArgvPosition = checkFileNamesPositions( argv[2] );
+    int ThirdArgvPosition = checkFileNamesPositions( argv[3] );
 
     if ( FirstArgvPosition == 5 || SecondArgvPosition == 5 || ThirdArgvPosition == 5 ) 
     {
@@ -66,7 +66,7 @@ int RightArgvOrder( char * argv[], std::vector<std::string> & RightArgvOrderVect
         return 1;
     }
 
-    int FourthArgvPosition = CheckFileNamesPositions( argv[4] );
+    int FourthArgvPosition = checkFileNamesPositions( argv[4] );
 
     std::map< int, std::string > RightArgvOrderMap;
     RightArgvOrderMap[FirstArgvPosition] = argv[1];
@@ -82,7 +82,7 @@ int RightArgvOrder( char * argv[], std::vector<std::string> & RightArgvOrderVect
     return 0;
 }
 
-void CopyDataFromMapToVectors( Parser ParseResult, std::vector<std::vector<std::string>>& ParsedDataVectors )
+void copyDataFromMapToVectors( Parser ParseResult, std::vector<std::vector<std::string>>& ParsedDataVectors )
 {
     std::unordered_map<std::string, std::vector<std::string>> ParsedDataMap = ParseResult.GetMap();
     for ( const auto& item : ParsedDataMap )
@@ -98,19 +98,19 @@ void CopyDataFromMapToVectors( Parser ParseResult, std::vector<std::vector<std::
     }
 }
 
-bool ComparisonComporator( const std::vector<std::string>& FirstVectorValue,
+bool сomparisonComporator( const std::vector<std::string>& FirstVectorValue,
                            const std::vector<std::string>& SecondVectorValue )
 {
     return FirstVectorValue[2] > SecondVectorValue[2];
 }
 
-void SortParsedDataVectors( std::vector<std::vector<std::string>>& ParsedDataVectors )
+void sortParsedDataVectors( std::vector<std::vector<std::string>>& ParsedDataVectors )
 {
     std::sort( ParsedDataVectors.begin(), ParsedDataVectors.end(),
-                   ComparisonComporator );
+                   сomparisonComporator );
 }
 
-void PrintParsedDataVectors( std::vector<std::vector<std::string>> ParsedDataVectors )
+void printParsedDataVectors( std::vector<std::vector<std::string>> ParsedDataVectors )
 {
     for (int i = 0; i < 10 && i < ParsedDataVectors.size(); i++)
     {
@@ -118,7 +118,7 @@ void PrintParsedDataVectors( std::vector<std::vector<std::string>> ParsedDataVec
     }
 }
 
-int CheckErrorWithNumberOfFileLines( int NumberOfFileLines )
+int checkErrorWithNumberOfFileLines( int NumberOfFileLines )
 {
     if ( NumberOfFileLines ) 
     {
