@@ -1,119 +1,120 @@
-#include "headers/Parser.h"
+#include "/home/scremyda/work/c++/homework/first_hw_main/Homework_Cpp_VK/headers/Parser.h"
 
-int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & ParseResult )
+
+int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & parseResult )
 {
-    std::ifstream BasicsFileStream( argv[0] );
-    std::getline( BasicsFileStream, ParseResult.ParsedLine_ );
+    std::ifstream basicsFileStream( argv[0] );
+    std::getline( basicsFileStream, parseResult.parsedLine_ );
 
-    int main_int = std::stoi( argv[3] );
-    while ( std::getline( BasicsFileStream, ParseResult.ParsedLine_ ) )
+    int numberFromUser = std::stoi( argv[3] );
+    while ( std::getline( basicsFileStream, parseResult.parsedLine_ ) )
     {
-        std::stringstream ParsedStringStream( ParseResult.ParsedLine_ );
-        ParseResult.ParsedLineWord_.clear();
-        ParseResult.ParsedLineVector_.clear();
+        std::stringstream parsedStringStream( parseResult.parsedLine_ );
+        parseResult.parsedLineWord_.clear();
+        parseResult.parsedLineVector_.clear();
 
-        while ( std::getline( ParsedStringStream, ParseResult.ParsedLineWord_, '\t' ) )
+        while ( std::getline( parsedStringStream, parseResult.parsedLineWord_, '\t' ) )
         {
-            ParseResult.ParsedLineVector_.push_back( ParseResult.ParsedLineWord_ );
+            parseResult.parsedLineVector_.push_back( parseResult.parsedLineWord_ );
         }
 
-        if ( ParseResult.ParsedLineVector_.size() !=  9 ) {
+        if ( parseResult.parsedLineVector_.size() !=  9 ) {
             return 1;
         }
 
-        if ( ParseResult.ParsedLineVector_[7] != "\\N" && ParseResult.ParsedLineVector_[1] == "movie" &&
-                ParseResult.ParsedLineVector_[4] == "0" )
+        if ( parseResult.parsedLineVector_[7] != "\\N" && parseResult.parsedLineVector_[1] == "movie" &&
+                parseResult.parsedLineVector_[4] == "0" )
         {
-            int ParsedNumberOfMovieRating = std::stoi( ParseResult.ParsedLineVector_[7] );
-            if ( ParsedNumberOfMovieRating <= main_int )
+            int parsedNumberOfMovieRating = std::stoi( parseResult.parsedLineVector_[7] );
+            if ( parsedNumberOfMovieRating <= numberFromUser )
             {
-                ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].push_back( ParseResult.
-                ParsedLineVector_[7] );
+                parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].push_back( parseResult.
+                parsedLineVector_[7] );
             }
         }
     }
-    BasicsFileStream.close();
+    basicsFileStream.close();
     return 0;
 }
 
-int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & ParseResult )
+int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & parseResult )
 {
-    std::ifstream RatingsFileStream( argv[1] );
-    std::getline( RatingsFileStream, ParseResult.ParsedLine_ );
+    std::ifstream ratingsFileStream( argv[1] );
+    std::getline( ratingsFileStream, parseResult.parsedLine_ );
 
-    while (std::getline( RatingsFileStream, ParseResult.ParsedLine_ ) ) {
-        std::stringstream ParsedStringStream( ParseResult.ParsedLine_ );
-        ParseResult.ParsedLineWord_.clear();
-        ParseResult.ParsedLineVector_.clear();
+    while (std::getline( ratingsFileStream, parseResult.parsedLine_ ) ) {
+        std::stringstream parsedStringStream( parseResult.parsedLine_ );
+        parseResult.parsedLineWord_.clear();
+        parseResult.parsedLineVector_.clear();
 
-        while ( std::getline( ParsedStringStream, ParseResult.ParsedLineWord_, '\t' ) )
+        while ( std::getline( parsedStringStream, parseResult.parsedLineWord_, '\t' ) )
         {
-            ParseResult.ParsedLineVector_.push_back( ParseResult.ParsedLineWord_ );
+            parseResult.parsedLineVector_.push_back( parseResult.parsedLineWord_ );
         }
 
-        if ( ParseResult.ParsedLineVector_.size() !=  3 ) {
+        if ( parseResult.parsedLineVector_.size() !=  3 ) {
             return 1;
         }
 
-        int ParsedFilmRating = std::stoi( ParseResult.ParsedLineVector_[2] );
-        if ( ParsedFilmRating >= 1000 && ParseResult.ParsedDataMap_.count( ParseResult.
-        ParsedLineVector_[0] ) != 0 )
+        int parsedFilmRating = std::stoi( parseResult.parsedLineVector_[2] );
+        if ( parsedFilmRating >= 1000 && parseResult.parsedDataMap_.count( parseResult.
+        parsedLineVector_[0] ) != 0 )
         {
-            ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].push_back( ParseResult.
-            ParsedLineVector_[1] );
+            parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].push_back( parseResult.
+            parsedLineVector_[1] );
         }
         else
         {
-            ParseResult.ParsedDataMap_.erase( ParseResult.ParsedLineVector_[0] );
+            parseResult.parsedDataMap_.erase( parseResult.parsedLineVector_[0] );
         }
     }
-    RatingsFileStream.close();
+    ratingsFileStream.close();
     return 0;
 }
 
-int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & ParseResult )
+int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & parseResult )
 {
-    std::ifstream AkasFileStream( argv[2] );
-    std::getline( AkasFileStream, ParseResult.ParsedLine_ );
+    std::ifstream akasFileStream( argv[2] );
+    std::getline( akasFileStream, parseResult.parsedLine_ );
 
-    while ( std::getline( AkasFileStream, ParseResult.ParsedLine_ ) )
+    while ( std::getline( akasFileStream, parseResult.parsedLine_ ) )
     {
-        std::stringstream ParsedStringStream( ParseResult.ParsedLine_ );
-        ParseResult.ParsedLineWord_.clear();
-        ParseResult.ParsedLineVector_.clear();
+        std::stringstream parsedStringStream( parseResult.parsedLine_ );
+        parseResult.parsedLineWord_.clear();
+        parseResult.parsedLineVector_.clear();
 
-        while ( std::getline( ParsedStringStream, ParseResult.ParsedLineWord_, '\t' ) )
+        while ( std::getline( parsedStringStream, parseResult.parsedLineWord_, '\t' ) )
         {
-            ParseResult.ParsedLineVector_.push_back( ParseResult.ParsedLineWord_ );
+            parseResult.parsedLineVector_.push_back( parseResult.parsedLineWord_ );
         }
 
-        if ( ParseResult.ParsedLineVector_.size() !=  8 ) {
+        if ( parseResult.parsedLineVector_.size() !=  8 ) {
             return 1;
         }
 
-        if ( ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].size() == 2 &&
-                ParseResult.ParsedDataMap_.count(ParseResult.ParsedLineVector_[0]) != 0 )
+        if ( parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].size() == 2 &&
+                parseResult.parsedDataMap_.count(parseResult.parsedLineVector_[0]) != 0 )
         {
-            ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].push_back( ParseResult.
-            ParsedLineVector_[2] );
+            parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].push_back( parseResult.
+            parsedLineVector_[2] );
         }
-        if ( ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].size() == 3 &&
-                ParseResult.ParsedLineVector_[3] == "RU" )
+        if ( parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].size() == 3 &&
+                parseResult.parsedLineVector_[3] == "RU" )
         {
-            ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].pop_back();
-            ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].push_back( ParseResult.
-            ParsedLineVector_[2] );
+            parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].pop_back();
+            parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].push_back( parseResult.
+            parsedLineVector_[2] );
         }
-        if ( ParseResult.ParsedDataMap_[ParseResult.ParsedLineVector_[0]].size() != 3 )
+        if ( parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].size() != 3 )
         {
-            ParseResult.ParsedDataMap_.erase( ParseResult.ParsedLineVector_[0] );
+            parseResult.parsedDataMap_.erase( parseResult.parsedLineVector_[0] );
         }
 
     }
-    AkasFileStream.close();
+    akasFileStream.close();
     return 0;
 }
 
 std::unordered_map<std::string, std::vector<std::string>> Parser::GetMap() const {
-    return ParsedDataMap_;
+    return parsedDataMap_;
 }

@@ -1,4 +1,5 @@
-#include "headers/ErrorProcessing.h"
+#include "/home/scremyda/work/c++/homework/first_hw_main/Homework_Cpp_VK/headers/ErrorProcessing.h"
+
 
 int main ( int argc , char * argv[] )
 {
@@ -14,38 +15,38 @@ int main ( int argc , char * argv[] )
         }
     }
 
-    std::vector<std::string> RightArgvOrderVector;
-    if ( rightArgvOrder( argv, RightArgvOrderVector ) ) 
+    std::vector<std::string> rightArgvOrderVector;
+    if ( rightArgvOrder( argv, rightArgvOrderVector ) ) 
     {
         return 1;
     }
 
-    Parser ParseResult;
+    Parser parseResult;
 
-    int ErrorWithNumberOfBasicsFileLines = ParseResult.parseBasicsFile( RightArgvOrderVector, ParseResult );
-    if ( checkErrorWithNumberOfFileLines( ErrorWithNumberOfBasicsFileLines ) ) 
+    int errorWithNumberOfBasicsFileLines = parseResult.parseBasicsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfBasicsFileLines ) ) 
     {
         return 1;
     }
 
-    int ErrorWithNumberOfRatingsFileLines = ParseResult.parseRatingsFile( RightArgvOrderVector, ParseResult );
-    if ( checkErrorWithNumberOfFileLines( ErrorWithNumberOfRatingsFileLines ) ) 
+    int errorWithNumberOfRatingsFileLines = parseResult.parseRatingsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfRatingsFileLines ) ) 
     {
         return 1;
     }
     
-    int ErrorWithNumberOfAkasFileLines = ParseResult.parseAkasFile( RightArgvOrderVector, ParseResult );
-    if ( checkErrorWithNumberOfFileLines( ErrorWithNumberOfAkasFileLines ) ) 
+    int errorWithNumberOfAkasFileLines = parseResult.parseAkasFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfAkasFileLines ) ) 
     {
         return 1;
     }
 
-    std::vector<std::vector<std::string>> ParsedDataVectors;
-    copyDataFromMapToVectors( ParseResult, ParsedDataVectors );
+    std::vector<std::vector<std::string>> parsedDataVectors;
+    copyDataFromMapToVectors( parseResult, parsedDataVectors );
 
-    sortParsedDataVectors( ParsedDataVectors );
+    sortParsedDataVectors( parsedDataVectors );
 
-    printParsedDataVectors( ParsedDataVectors );
+    printParsedDataVectors( parsedDataVectors );
 
     return 0;
 }
