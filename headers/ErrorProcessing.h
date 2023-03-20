@@ -6,7 +6,6 @@
 #include "Parser.h"
 
 
-
 bool checkFileOpen ( char * argv );
 
 bool checkCommandLneArguments( int argc );

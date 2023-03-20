@@ -1,4 +1,4 @@
-#include "/home/scremyda/work/c++/homework/first_hw_main/Homework_Cpp_VK/headers/ErrorProcessing.h"
+#include "ErrorProcessing.h"
 
 
 bool checkFileOpen( char * argv )

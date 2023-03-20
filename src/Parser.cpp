@@ -1,4 +1,4 @@
-#include "/home/scremyda/work/c++/homework/first_hw_main/Homework_Cpp_VK/headers/Parser.h"
+#include "Parser.h"
 
 
 int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & parseResult )
@@ -115,6 +115,7 @@ int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & parseResult 
     return 0;
 }
 
-std::unordered_map<std::string, std::vector<std::string>> Parser::GetMap() const {
+std::unordered_map<std::string, std::vector<std::string>> Parser::GetMap() const 
+{
     return parsedDataMap_;
 }

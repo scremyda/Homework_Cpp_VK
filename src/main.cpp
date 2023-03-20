@@ -1,4 +1,4 @@
-#include "/home/scremyda/work/c++/homework/first_hw_main/Homework_Cpp_VK/headers/ErrorProcessing.h"
+#include "ErrorProcessing.h"
 
 
 int main ( int argc , char * argv[] )
@@ -7,6 +7,7 @@ int main ( int argc , char * argv[] )
     {
         return 1;
     }
+    
     for ( size_t i = 0; i < 3; ++i )
     {
         if( checkFileOpen( argv[i] ) )
