@@ -17,7 +17,7 @@ void copyDataFromMapToVectors( Parser parseResult, std::vector<std::vector<std::
     }
 }
 
-bool сomparisonComporator( const std::vector<std::string> & firstVectorValue,
+bool сomparisonComparator( const std::vector<std::string> & firstVectorValue,
                            const std::vector<std::string> & secondVectorValue )
 {
     return firstVectorValue[2] > secondVectorValue[2];
@@ -26,7 +26,7 @@ bool сomparisonComporator( const std::vector<std::string> & firstVectorValue,
 void sortParsedDataVectors( std::vector<std::vector<std::string>> & parsedDataVectors )
 {
     std::sort( parsedDataVectors.begin(), parsedDataVectors.end(),
-                   сomparisonComporator );
+                   сomparisonComparator );
 }
 
 void printParsedDataVectors( std::vector<std::vector<std::string>> parsedDataVectors )

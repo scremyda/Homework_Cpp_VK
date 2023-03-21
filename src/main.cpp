@@ -4,7 +4,7 @@
 
 int main ( int argc , char * argv[] )
 {
-    if( checkCommandLneArguments( argc ) )
+    if( checkCommandLineArguments( argc ) )
     {
         return 1;
     }

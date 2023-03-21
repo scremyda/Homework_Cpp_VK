@@ -15,7 +15,7 @@ bool checkFileOpen( char * argv )
     return 0;
 }
 
-bool checkCommandLneArguments( int argc )
+bool checkCommandLineArguments( int argc )
 {
     if (argc != 5)
     {

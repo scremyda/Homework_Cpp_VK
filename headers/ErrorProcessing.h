@@ -7,7 +7,7 @@
 
 bool checkFileOpen ( char * argv );
 
-bool checkCommandLneArguments( int argc );
+bool checkCommandLineArguments( int argc );
 
 int checkFileNamesPositions( char * argv );
 
