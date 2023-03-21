@@ -42,7 +42,7 @@ int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & parseResul
     std::ifstream ratingsFileStream( argv[1] );
     std::getline( ratingsFileStream, parseResult.parsedLine_ );
 
-    while (std::getline( ratingsFileStream, parseResult.parsedLine_ ) ) {
+    while ( std::getline( ratingsFileStream, parseResult.parsedLine_ ) ) {
         std::stringstream parsedStringStream( parseResult.parsedLine_ );
         parseResult.parsedLineWord_.clear();
         parseResult.parsedLineVector_.clear();

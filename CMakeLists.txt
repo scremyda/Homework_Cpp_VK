@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-
-project(my_project)
+project(project)
 
 include_directories(headers)
 
@@ -12,7 +11,8 @@ set(SOURCES
     src/main.cpp
     src/Parser.cpp
     src/ErrorProcessing.cpp
+    src/ParsedInformationProcessing.cpp
 )
 
 # Добавление исполняемого файла
-add_executable(my_project ${SOURCES})
+add_executable(project ${SOURCES})

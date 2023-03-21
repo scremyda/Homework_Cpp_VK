@@ -1,4 +1,5 @@
 #include "ErrorProcessing.h"
+#include "ParsedInformationProcessing.h"
 
 
 int main ( int argc , char * argv[] )
@@ -7,7 +8,7 @@ int main ( int argc , char * argv[] )
     {
         return 1;
     }
-    
+
     for ( size_t i = 0; i < 3; ++i )
     {
         if( checkFileOpen( argv[i] ) )
@@ -17,27 +18,14 @@ int main ( int argc , char * argv[] )
     }
 
     std::vector<std::string> rightArgvOrderVector;
-    if ( rightArgvOrder( argv, rightArgvOrderVector ) ) 
+    if ( rightArgvOrder( argv, rightArgvOrderVector ) )
     {
         return 1;
     }
 
     Parser parseResult;
 
-    int errorWithNumberOfBasicsFileLines = parseResult.parseBasicsFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfBasicsFileLines ) ) 
-    {
-        return 1;
-    }
-
-    int errorWithNumberOfRatingsFileLines = parseResult.parseRatingsFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfRatingsFileLines ) ) 
-    {
-        return 1;
-    }
-    
-    int errorWithNumberOfAkasFileLines = parseResult.parseAkasFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfAkasFileLines ) ) 
+    if ( checkErrorsWithFilesLines( parseResult, rightArgvOrderVector ) )
     {
         return 1;
     }

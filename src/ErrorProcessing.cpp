@@ -60,7 +60,7 @@ int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVect
     int secondArgvPosition = checkFileNamesPositions( argv[2] );
     int thirdArgvPosition = checkFileNamesPositions( argv[3] );
 
-    if ( firstArgvPosition == 5 || secondArgvPosition == 5 || thirdArgvPosition == 5 ) 
+    if ( firstArgvPosition == 5 || secondArgvPosition == 5 || thirdArgvPosition == 5 )
     {
         std::cout << "Задано неверное имя файла(файлы должны называться: title.basics.tsv, title.ratings.tsv, title.akas.tsv) \n";
         return 1;
@@ -74,7 +74,7 @@ int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVect
     rightArgvOrderMap[thirdArgvPosition] = argv[3];
     rightArgvOrderMap[fourthArgvPosition] = argv[4];
 
-    for ( auto it = rightArgvOrderMap.begin(); it != rightArgvOrderMap.end(); ++it ) 
+    for ( auto it = rightArgvOrderMap.begin(); it != rightArgvOrderMap.end(); ++it )
     {
         rightArgvOrderVector.push_back( it->second );
     }
@@ -82,49 +82,35 @@ int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVect
     return 0;
 }
 
-void copyDataFromMapToVectors( Parser parseResult, std::vector<std::vector<std::string>>& parsedDataVectors )
-{
-    std::unordered_map<std::string, std::vector<std::string>> parsedDataMap = parseResult.GetMap();
-    for ( const auto& item : parsedDataMap )
-    {
-        const auto& values = item.second;
-        if ( values.size() == 3 )
-        {
-            std::vector<std::string> temporaryVectorForMapPair = {item.first};
-            temporaryVectorForMapPair.insert( temporaryVectorForMapPair.end(), values.begin(),
-                                               values.end() );
-            parsedDataVectors.push_back( temporaryVectorForMapPair );
-        }
-    }
-}
-
-bool сomparisonComporator( const std::vector<std::string>& firstVectorValue,
-                           const std::vector<std::string>& secondVectorValue )
-{
-    return firstVectorValue[2] > secondVectorValue[2];
-}
-
-void sortParsedDataVectors( std::vector<std::vector<std::string>>& parsedDataVectors )
-{
-    std::sort( parsedDataVectors.begin(), parsedDataVectors.end(),
-                   сomparisonComporator );
-}
-
-void printParsedDataVectors( std::vector<std::vector<std::string>> parsedDataVectors )
-{
-    for (int i = 0; i < 10 && i < parsedDataVectors.size(); i++)
-    {
-            std::cout << parsedDataVectors[i][3] << std::endl;
-    }
-}
-
 int checkErrorWithNumberOfFileLines( int numberOfFileLines )
 {
-    if ( numberOfFileLines ) 
+    if ( numberOfFileLines )
     {
         std::cout << "Битый файл/неверное количество элементов в строке" << std::endl;
         return 1;
     }
     return 0;
+}
 
+int checkErrorsWithFilesLines( Parser & parseResult, std::vector<std::string> & rightArgvOrderVector )
+{
+    int errorWithNumberOfBasicsFileLines = parseResult.parseBasicsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfBasicsFileLines ) ) 
+    {
+        return 1;
+    }
+
+    int errorWithNumberOfRatingsFileLines = parseResult.parseRatingsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfRatingsFileLines ) )
+    {
+        return 1;
+    }
+    
+    int errorWithNumberOfAkasFileLines = parseResult.parseAkasFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfAkasFileLines ) )
+    {
+        return 1;
+    }
+
+    return 0;
 }
