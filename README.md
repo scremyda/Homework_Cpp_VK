@@ -29,4 +29,6 @@ make
 ```
 
 Пример запуска программы:
+```
 ./project title.ratings.tsv title.akas.tsv title.basics.tsv 130
+```
