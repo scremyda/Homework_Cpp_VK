@@ -6,8 +6,8 @@ bool checkFileOpen( char * argv )
     std::ifstream testFileStream( argv );
     if (!testFileStream.is_open())
     {
-        std::cout << "Не удалось открыть файл " << argv << " для чтения" << std::endl;
-        std::cout << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
+        std::cerr << "Не удалось открыть файл " << argv << " для чтения" << std::endl;
+        std::cerr << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
         return 1;
     }
     testFileStream.close();
@@ -19,8 +19,8 @@ bool checkCommandLineArguments( int argc )
 {
     if (argc != 5)
     {
-        std::cout << "Неверное количество аргументов командной строки" << std::endl;
-        std::cout << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
+        std::cerr << "Неверное количество аргументов командной строки" << std::endl;
+        std::cerr << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
         return 1;
     }
     return 0;
@@ -62,7 +62,7 @@ int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVect
 
     if ( firstArgvPosition == 5 || secondArgvPosition == 5 || thirdArgvPosition == 5 )
     {
-        std::cout << "Задано неверное имя файла(файлы должны называться: title.basics.tsv, title.ratings.tsv, title.akas.tsv) \n";
+        std::cerr << "Задано неверное имя файла(файлы должны называться: title.basics.tsv, title.ratings.tsv, title.akas.tsv) \n";
         return 1;
     }
 
@@ -86,7 +86,7 @@ int checkErrorWithNumberOfFileLines( int numberOfFileLines )
 {
     if ( numberOfFileLines )
     {
-        std::cout << "Битый файл/неверное количество элементов в строке" << std::endl;
+        std::cerr << "Битый файл/неверное количество элементов в строке" << std::endl;
         return 1;
     }
     return 0;
