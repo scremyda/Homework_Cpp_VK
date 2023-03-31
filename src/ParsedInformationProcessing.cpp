@@ -1,7 +1,9 @@
+#include <algorithm>
+#include <iostream>
 #include "ParsedInformationProcessing.h"
 
 
-void copyDataFromMapToVectors( Parser parseResult, std::vector<std::vector<std::string>> & parsedDataVectors )
+void copyDataFromParsedFilesMapToVectors( const Parser & parseResult, std::vector<std::vector<std::string>> & parsedDataVectors )
 {
     std::unordered_map<std::string, std::vector<std::string>> parsedDataMap = parseResult.GetMap();
     for ( const auto& item : parsedDataMap )
@@ -17,7 +19,7 @@ void copyDataFromMapToVectors( Parser parseResult, std::vector<std::vector<std::
     }
 }
 
-bool сomparisonComparator( const std::vector<std::string> & firstVectorValue,
+bool comparisonComparator( const std::vector<std::string> & firstVectorValue,
                            const std::vector<std::string> & secondVectorValue )
 {
     return firstVectorValue[2] > secondVectorValue[2];
@@ -26,7 +28,7 @@ bool сomparisonComparator( const std::vector<std::string> & firstVectorValue,
 void sortParsedDataVectors( std::vector<std::vector<std::string>> & parsedDataVectors )
 {
     std::sort( parsedDataVectors.begin(), parsedDataVectors.end(),
-                   сomparisonComparator );
+                   comparisonComparator );
 }
 
 void printParsedDataVectors( std::vector<std::vector<std::string>> parsedDataVectors )

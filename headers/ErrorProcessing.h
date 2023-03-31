@@ -1,11 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <map>
 #include "Parser.h"
 
-
-bool checkFileOpen ( char * argv );
 
 bool checkCommandLineArguments( int argc );
 
@@ -13,6 +9,6 @@ int checkFileNamesPositions( char * argv );
 
 int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVector );
 
-int checkErrorWithNumberOfFileLines( int numberOfFileLines );
+int checkErrorsWithReadingFiles( int errorsWithFile );
 
-int checkErrorsWithFilesLines( Parser & parseResult, std::vector<std::string> & rightArgvOrderVector );
+int checkErrorsWithFiles( Parser & parseResult, std::vector<std::string> & rightArgvOrderVector );

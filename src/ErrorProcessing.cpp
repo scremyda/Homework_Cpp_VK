@@ -1,19 +1,7 @@
+#include <iostream>
+#include <map>
 #include "ErrorProcessing.h"
 
-
-bool checkFileOpen( char * argv )
-{
-    std::ifstream testFileStream( argv );
-    if (!testFileStream.is_open())
-    {
-        std::cerr << "Не удалось открыть файл " << argv << " для чтения" << std::endl;
-        std::cerr << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
-        return 1;
-    }
-    testFileStream.close();
-
-    return 0;
-}
 
 bool checkCommandLineArguments( int argc )
 {
@@ -21,9 +9,9 @@ bool checkCommandLineArguments( int argc )
     {
         std::cerr << "Неверное количество аргументов командной строки" << std::endl;
         std::cerr << "Правильный порядок аргументов: First(FilePath) Second(FilePath) Third(FilePath) Количество(минут)" << std::endl;
-        return 1;
+        return false;
     }
-    return 0;
+    return true;
 }
 
 int checkFileNamesPositions( char * argv )
@@ -82,9 +70,12 @@ int rightArgvOrder( char * argv[], std::vector<std::string> & rightArgvOrderVect
     return 0;
 }
 
-int checkErrorWithNumberOfFileLines( int numberOfFileLines )
+int checkErrorsWithReadingFiles( int errorsWithFile )
 {
-    if ( numberOfFileLines )
+    if ( errorsWithFile == 1 )
+    {
+        return 1;
+    } else if ( errorsWithFile == 2 )
     {
         std::cerr << "Битый файл/неверное количество элементов в строке" << std::endl;
         return 1;
@@ -92,22 +83,22 @@ int checkErrorWithNumberOfFileLines( int numberOfFileLines )
     return 0;
 }
 
-int checkErrorsWithFilesLines( Parser & parseResult, std::vector<std::string> & rightArgvOrderVector )
+int checkErrorsWithFiles( Parser & parseResult, std::vector<std::string> & rightArgvOrderVector )
 {
-    int errorWithNumberOfBasicsFileLines = parseResult.parseBasicsFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfBasicsFileLines ) ) 
+    int errorsWithFileBasics = parseResult.parseBasicsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorsWithReadingFiles( errorsWithFileBasics ) ) 
     {
         return 1;
     }
 
-    int errorWithNumberOfRatingsFileLines = parseResult.parseRatingsFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfRatingsFileLines ) )
+    int errorsWithFileRatings = parseResult.parseRatingsFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorsWithReadingFiles( errorsWithFileRatings ) )
     {
         return 1;
     }
     
-    int errorWithNumberOfAkasFileLines = parseResult.parseAkasFile( rightArgvOrderVector, parseResult );
-    if ( checkErrorWithNumberOfFileLines( errorWithNumberOfAkasFileLines ) )
+    int errorsWithFileAkas = parseResult.parseAkasFile( rightArgvOrderVector, parseResult );
+    if ( checkErrorsWithReadingFiles( errorsWithFileAkas ) )
     {
         return 1;
     }

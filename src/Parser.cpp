@@ -1,9 +1,15 @@
+#include <iostream>
 #include "Parser.h"
 
 
 int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & parseResult )
 {
     std::ifstream basicsFileStream( argv[0] );
+    if ( !basicsFileStream.is_open() ) {
+        std::cerr << "Не удалось открыть файл " << argv[2] << " для чтения" << std::endl;
+        return 1;
+    }
+
     std::getline( basicsFileStream, parseResult.parsedLine_ );
 
     int numberFromUser = std::stoi( argv[3] );
@@ -19,7 +25,7 @@ int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & parseResult
         }
 
         if ( parseResult.parsedLineVector_.size() !=  9 ) {
-            return 1;
+            return 2;
         }
 
         if ( parseResult.parsedLineVector_[7] != "\\N" && parseResult.parsedLineVector_[1] == "movie" &&
@@ -33,13 +39,17 @@ int Parser::parseBasicsFile( std::vector<std::string> argv, Parser & parseResult
             }
         }
     }
-    basicsFileStream.close();
     return 0;
 }
 
 int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & parseResult )
 {
     std::ifstream ratingsFileStream( argv[1] );
+    if ( !ratingsFileStream.is_open() ) {
+        std::cerr << "Не удалось открыть файл " << argv[2] << " для чтения" << std::endl;
+        return 1;
+    }
+
     std::getline( ratingsFileStream, parseResult.parsedLine_ );
 
     while ( std::getline( ratingsFileStream, parseResult.parsedLine_ ) ) {
@@ -53,7 +63,7 @@ int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & parseResul
         }
 
         if ( parseResult.parsedLineVector_.size() !=  3 ) {
-            return 1;
+            return 2;
         }
 
         int parsedFilmRating = std::stoi( parseResult.parsedLineVector_[2] );
@@ -68,13 +78,17 @@ int Parser::parseRatingsFile( std::vector<std::string> argv, Parser & parseResul
             parseResult.parsedDataMap_.erase( parseResult.parsedLineVector_[0] );
         }
     }
-    ratingsFileStream.close();
     return 0;
 }
 
 int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & parseResult )
 {
     std::ifstream akasFileStream( argv[2] );
+    if ( !akasFileStream.is_open() ) {
+        std::cerr << "Не удалось открыть файл " << argv[2] << " для чтения" << std::endl;
+        return 1;
+    }
+
     std::getline( akasFileStream, parseResult.parsedLine_ );
 
     while ( std::getline( akasFileStream, parseResult.parsedLine_ ) )
@@ -89,7 +103,7 @@ int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & parseResult 
         }
 
         if ( parseResult.parsedLineVector_.size() !=  8 ) {
-            return 1;
+            return 2;
         }
 
         if ( parseResult.parsedDataMap_[parseResult.parsedLineVector_[0]].size() == 2 &&
@@ -111,7 +125,6 @@ int Parser::parseAkasFile ( std::vector<std::string> argv, Parser & parseResult 
         }
 
     }
-    akasFileStream.close();
     return 0;
 }
 

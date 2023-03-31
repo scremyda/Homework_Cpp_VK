@@ -4,17 +4,9 @@
 
 int main ( int argc , char * argv[] )
 {
-    if( checkCommandLineArguments( argc ) )
+    if( !checkCommandLineArguments( argc ) )
     {
         return 1;
-    }
-
-    for ( size_t i = 0; i < 3; ++i )
-    {
-        if( checkFileOpen( argv[i] ) )
-        {
-            return 1;
-        }
     }
 
     std::vector<std::string> rightArgvOrderVector;
@@ -25,13 +17,13 @@ int main ( int argc , char * argv[] )
 
     Parser parseResult;
 
-    if ( checkErrorsWithFilesLines( parseResult, rightArgvOrderVector ) )
+    if ( checkErrorsWithFiles( parseResult, rightArgvOrderVector ) )
     {
         return 1;
     }
 
     std::vector<std::vector<std::string>> parsedDataVectors;
-    copyDataFromMapToVectors( parseResult, parsedDataVectors );
+    copyDataFromParsedFilesMapToVectors( parseResult, parsedDataVectors );
 
     sortParsedDataVectors( parsedDataVectors );
 
