@@ -9,7 +9,11 @@ include_directories(headers)
 # Установка списка исходных файлов
 set(SOURCES
     src/main.cpp
-    src/IOperation.cpp
+    src/EchoOperation.cpp
+    src/CatOperation.cpp
+    src/UniqOperation.cpp
+    src/Parser.cpp
+    src/Conveyer.cpp
 )
 
 # Добавление исполняемого файла
