@@ -10,7 +10,8 @@ void UniqOperation::ProcessLine(const std::string& line) {
 }
 
 void UniqOperation::HandleEndOfInput() {
-    uniqBuffer_.erase(std::unique(uniqBuffer_.begin(), uniqBuffer_.end()), uniqBuffer_.end());
+    uniqBuffer_.erase(std::unique(uniqBuffer_.begin(), uniqBuffer_.end()),
+    uniqBuffer_.end());
 
     for (const auto& line : uniqBuffer_) {
         if (nextOperation_) {

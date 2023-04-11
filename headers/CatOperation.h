@@ -6,9 +6,8 @@
 #include <vector>
 
 
-
 class CatOperation : public IOperation {
-public:
+ public:
     explicit CatOperation(std::string fileName);
     ~CatOperation();
 
@@ -18,7 +17,7 @@ public:
     void HandleEndOfInput() override;
     void SetNextOperation(std::shared_ptr<IOperation> operation) override;
 
-private:
+ private:
     std::string fileName_;
     std::shared_ptr<IOperation> nextOperation_;
     std::ifstream inputStream_;

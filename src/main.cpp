@@ -9,7 +9,6 @@
 
 
 int main(int argc, char** argv) {
-
     if (argc != 2) {
         std::cerr << "Неверное кол-во аргументов программы." << std::endl;
         return 1;

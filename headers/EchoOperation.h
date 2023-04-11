@@ -9,7 +9,7 @@ class EchoOperation: public IOperation {
     ~EchoOperation() = default;
 
     EchoOperation& operator=(const EchoOperation& other) = delete;
-    
+
     void ProcessLine(const std::string& line) override {}
     void HandleEndOfInput() override;
     void SetNextOperation(std::shared_ptr<IOperation> operation) override;

@@ -6,7 +6,7 @@
 
 
 class Conveyer {
-public:
+ public:
     void SetOperation(const std::shared_ptr<IOperation>& operation);
 
     void SetError();
@@ -17,7 +17,7 @@ public:
 
     void RunConveyer();
 
-private:
+ private:
     std::vector<std::shared_ptr<IOperation>> operations_;
     bool errors_ = false;
 };
