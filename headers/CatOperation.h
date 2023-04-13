@@ -8,7 +8,7 @@
 
 class CatOperation : public IOperation {
  public:
-    explicit CatOperation(std::string fileName);
+    explicit CatOperation(const std::string& fileName);
     ~CatOperation();
 
     CatOperation& operator=(const CatOperation& other) = delete;

@@ -5,7 +5,7 @@
 #include <vector>
 
 
-class Conveyer {
+class Conveyor {
  public:
     void SetOperation(const std::shared_ptr<IOperation>& operation);
 

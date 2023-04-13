@@ -3,8 +3,8 @@
 #include <iostream>
 
 
-EchoOperation::EchoOperation(std::string line) :
-echoLine_(std::move(line)), nextOperation_(nullptr) {}
+EchoOperation::EchoOperation(const std::string& line) :
+echoLine_(line), nextOperation_(nullptr) {}
 
 void EchoOperation::HandleEndOfInput() {
     if (nextOperation_) {

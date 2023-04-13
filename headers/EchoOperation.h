@@ -5,7 +5,7 @@
 
 class EchoOperation: public IOperation {
  public:
-    explicit EchoOperation(std::string line);
+    explicit EchoOperation(const std::string& line);
     ~EchoOperation() = default;
 
     EchoOperation& operator=(const EchoOperation& other) = delete;

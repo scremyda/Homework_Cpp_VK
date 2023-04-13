@@ -9,14 +9,14 @@
 
 Parser::Parser(char** argv) : input_(argv[1]), streamInput_(input_) {}
 
-Conveyer Parser::Parse() {
+Conveyor Parser::Parse() {
     std::vector<std::string> commands;
     std::string command;
     while (std::getline(streamInput_, command, '|')) {
         commands.push_back(command);
     }
 
-    Conveyer conveyor;
+    Conveyor conveyor;
     for (const std::string& cmd : commands) {
         std::istringstream iss(cmd);
         std::string function;

@@ -3,7 +3,7 @@
 #include "CatOperation.h"
 #include "UniqOperation.h"
 #include "Parser.h"
-#include "Conveyer.h"
+#include "Conveyor.h"
 
 #include <iostream>
 
@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     }
 
     Parser parser(argv);
-    Conveyer conveyor = parser.Parse();
+    Conveyor conveyor = parser.Parse();
 
     if (conveyor.GetError()) {
         return 1;

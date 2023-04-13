@@ -1,24 +1,24 @@
-#include "Conveyer.h"
+#include "Conveyor.h"
 
 
-void Conveyer::SetError() {
+void Conveyor::SetError() {
     errors_ = true;
 }
 
-bool Conveyer::GetError() {
+bool Conveyor::GetError() {
     return errors_;
 }
 
-void Conveyer::SetOperation(const std::shared_ptr<IOperation>& operation) {
+void Conveyor::SetOperation(const std::shared_ptr<IOperation>& operation) {
     operations_.push_back(operation);
 }
 
-void Conveyer::MakeConveyer() {
+void Conveyor::MakeConveyer() {
     for (size_t i = 0; i < operations_.size() - 1; ++i) {
         operations_[i]->SetNextOperation(operations_[i + 1]);
     }
 }
 
-void Conveyer::RunConveyer() {
+void Conveyor::RunConveyer() {
     operations_[0]->HandleEndOfInput();
 }

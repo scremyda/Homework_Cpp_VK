@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Conveyer.h"
+#include "Conveyor.h"
 
 #include <sstream>
 
@@ -12,7 +12,7 @@ class Parser {
 
     Parser& operator=(const Parser& other) = delete;
 
-    Conveyer Parse();
+    Conveyor Parse();
 
  private:
     std::string input_;

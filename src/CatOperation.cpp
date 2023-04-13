@@ -4,8 +4,8 @@
 #include <iostream>
 
 
-CatOperation::CatOperation(std::string fileName)
-    : fileName_(std::move(fileName)), nextOperation_(nullptr) {
+CatOperation::CatOperation(const std::string& fileName)
+    : fileName_(fileName), nextOperation_(nullptr) {
     inputStream_.open(fileName_);
     if (!inputStream_) {
         std::cerr << "Невозможно открыть файл: " << fileName_ << std::endl;

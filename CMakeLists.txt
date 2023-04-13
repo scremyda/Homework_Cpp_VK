@@ -13,7 +13,7 @@ set(SOURCES
     src/CatOperation.cpp
     src/UniqOperation.cpp
     src/Parser.cpp
-    src/Conveyer.cpp
+    src/Conveyor.cpp
 )
 
 # Добавление исполняемого файла
