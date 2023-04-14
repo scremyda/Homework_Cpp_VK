@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cpp_executable
-          path: build/dz2
+          path: build/project
 
   dynamic-analysis:
     needs: build
@@ -44,11 +44,11 @@ jobs:
           path: ./cpp_executable
 
       - name: Check folder
-        run: chmod +x ./cpp_executable/dz2
+        run: chmod +x ./cpp_executable/project
 
       - name: Run Valgrind
         run: |
-          valgrind --leak-check=full -q ./cpp_executable/dz2 'echo 1 | cat file_1.txt | cat file_2.txt'
+          valgrind --leak-check=full -q ./cpp_executable/project 'echo 1 | cat file_1.txt | cat file_2.txt'
           EXIT_STATUS=$?
           if [ $EXIT_STATUS -eq 0 ]; then
           # программа завершена успешно без утечек памяти

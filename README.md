@@ -10,7 +10,7 @@ echo <some string> - игнорирует строки поданные на в�
 Для реализации обработки строк утверждается следующий интерфейс IOperation.
 Наследник IOperation обязан реализовать методы:
 ```
-void ProcessLine(const std::string& str);
+void ProcessLine(const std::string& str) = 0;
 void HandleEndOfInput() = 0;
 void SetNextOperation(<умный/сырой указатель/ссылка на IOperation>) = 0;
 ```
