@@ -1,14 +1,6 @@
 #include "Conveyor.h"
 
 
-void Conveyor::SetError() {
-    errors_ = true;
-}
-
-bool Conveyor::GetError() {
-    return errors_;
-}
-
 void Conveyor::SetOperation(const std::shared_ptr<IOperation>& operation) {
     operations_.push_back(operation);
 }

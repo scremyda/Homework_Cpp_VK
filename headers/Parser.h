@@ -13,8 +13,6 @@ class Parser {
     Parser& operator=(const Parser& other) = delete;
 
     Conveyor Parse();
-
  private:
-    std::string input_;
     std::stringstream streamInput_;
 };

@@ -3,7 +3,6 @@
 #include "IOperation.h"
 
 #include <fstream>
-#include <vector>
 
 
 class CatOperation : public IOperation {

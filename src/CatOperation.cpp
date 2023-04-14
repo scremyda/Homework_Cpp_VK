@@ -1,16 +1,13 @@
 #include "CatOperation.h"
-#include "UniqOperation.h"
 
-#include <string>
 #include <iostream>
-#include <typeinfo>
 
 
 CatOperation::CatOperation(const std::string& fileName)
     : fileName_(fileName), nextOperation_(nullptr) {
     inputStream_.open(fileName_);
     if (!inputStream_) {
-        std::cerr << "Невозможно открыть файл: " << fileName_ << std::endl;
+        throw std::runtime_error("Unable to open the file: " + fileName_);
     }
 }
 

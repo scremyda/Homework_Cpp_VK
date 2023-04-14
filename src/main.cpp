@@ -9,21 +9,21 @@
 
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        std::cerr << "Неверное кол-во аргументов программы." << std::endl;
+    try {
+        if (argc != 2) {
+            throw std::invalid_argument("Invalid number of arguments for program");
+        }
+
+        Parser parser(argv);
+
+        Conveyor conveyor = parser.Parse();
+        
+        conveyor.MakeConveyer();
+        conveyor.RunConveyer();
+    } catch (const std::exception& exception) {
+        std::cerr << "Exception occurred: " << exception.what() << std::endl;
         return 1;
     }
-
-    Parser parser(argv);
-    Conveyor conveyor = parser.Parse();
-
-    if (conveyor.GetError()) {
-        return 1;
-    }
-
-    conveyor.MakeConveyer();
-
-    conveyor.RunConveyer();
-
+    
     return 0;
 }

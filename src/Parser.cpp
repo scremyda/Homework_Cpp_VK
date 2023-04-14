@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-Parser::Parser(char** argv) : input_(argv[1]), streamInput_(input_) {}
+Parser::Parser(char** argv) : streamInput_(argv[1]) {}
 
 Conveyor Parser::Parse() {
     std::vector<std::string> commands;
@@ -27,42 +27,25 @@ Conveyor Parser::Parse() {
             iss >> filename;
             operation = std::make_shared<CatOperation>(filename);
             if (iss >> filename) {
-                std::cerr <<
-                "Было задано неверное кол-во аргументов для cat <filename>"
-                << std::endl;
-                conveyor.SetError();
+                throw  std::invalid_argument("Invalid number of arguments for cat <filename>");
             }
         } else if (function == "echo") {
             std::string argument;
             iss >> argument;
             operation = std::make_shared<EchoOperation>(argument);
             if (iss >> argument) {
-                std::cerr <<
-                "Было задано неверное кол-во аргументов для echo <some string>"
-                << std::endl;
-                conveyor.SetError();
+                throw  std::invalid_argument("Invalid number of arguments for echo <some string>");
             }
         } else if (function == "uniq") {
             operation = std::make_shared<UniqOperation>();
             std::string argument;
             if (iss >> argument) {
-                std::cerr <<
-                "Было задано неверное кол-во аргументов для uniq <zero arguments>"
-                << std::endl;
-                conveyor.SetError();
+                throw  std::invalid_argument("Invalid number of arguments for uniq <zero arguments>");
             }
         } else {
-            std::cerr <<
-            "Введенной команды " << function << " нет в списке команд."
-            << std::endl;
-            std::cerr <<
-            "Список команд: echo <some string>, cat <filename>, uniq <zero arguments>"
-            << std::endl;
-            conveyor.SetError();
+            throw  std::invalid_argument("Invalid command:" + function);
         }
-        if (operation) {
-            conveyor.SetOperation(operation);
-        }
+        conveyor.SetOperation(operation);
     }
 
     return conveyor;
