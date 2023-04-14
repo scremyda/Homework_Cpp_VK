@@ -1,9 +1,9 @@
-#include "IOperation.h"
-#include "EchoOperation.h"
-#include "CatOperation.h"
-#include "UniqOperation.h"
-#include "Parser.h"
-#include "Conveyor.h"
+#include "IOperation.hpp"
+#include "EchoOperation.hpp"
+#include "CatOperation.hpp"
+#include "UniqOperation.hpp"
+#include "Parser.hpp"
+#include "Conveyor.hpp"
 
 #include <iostream>
 

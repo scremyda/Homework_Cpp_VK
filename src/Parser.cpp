@@ -1,8 +1,8 @@
-#include "Parser.h"
-#include "IOperation.h"
-#include "CatOperation.h"
-#include "EchoOperation.h"
-#include "UniqOperation.h"
+#include "Parser.hpp"
+#include "IOperation.hpp"
+#include "CatOperation.hpp"
+#include "EchoOperation.hpp"
+#include "UniqOperation.hpp"
 
 #include <iostream>
 

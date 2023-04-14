@@ -1,5 +1,5 @@
-#include "CatOperation.h"
-#include "UniqOperation.h"
+#include "CatOperation.hpp"
+#include "UniqOperation.hpp"
 
 #include <iostream>
 #include <algorithm>
