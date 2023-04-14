@@ -45,7 +45,7 @@ Conveyor Parser::Parse() {
         } else {
             throw  std::invalid_argument("Invalid command:" + function);
         }
-        conveyor.SetOperation(operation);
+        conveyor.SetOperationBackward(operation);
     }
 
     return conveyor;
