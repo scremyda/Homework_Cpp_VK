@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Conveyor.h"
+#include "Conveyor.hpp"
 
 #include <sstream>
 

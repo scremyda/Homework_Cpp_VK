@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOperation.h"
+#include "IOperation.hpp"
 
 
 class UniqOperation: public IOperation {
