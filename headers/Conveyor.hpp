@@ -7,7 +7,7 @@
 
 class Conveyor {
  public:
-    void SetOperation(const std::shared_ptr<IOperation>& operation);
+    void SetOperationBackward(const std::shared_ptr<IOperation>& operation);
 
     void MakeConveyer();
 

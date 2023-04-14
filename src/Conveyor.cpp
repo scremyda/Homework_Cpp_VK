@@ -1,7 +1,7 @@
 #include "Conveyor.hpp"
 
 
-void Conveyor::SetOperation(const std::shared_ptr<IOperation>& operation) {
+void Conveyor::SetOperationBackward(const std::shared_ptr<IOperation>& operation) {
     operations_.push_back(operation);
 }
 
