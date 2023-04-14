@@ -3,4 +3,3 @@ build/
 CMakeFiles/
 .vscode/
 *.out
-*.txt
