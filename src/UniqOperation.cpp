@@ -1,26 +1,22 @@
+#include "CatOperation.h"
 #include "UniqOperation.h"
 
 #include <iostream>
 #include <algorithm>
 
+
 UniqOperation::UniqOperation() : nextOperation_(nullptr) {}
 
 void UniqOperation::ProcessLine(const std::string& line) {
-    uniqBuffer_.push_back(line);
+    if (nextOperation_ && line != previousLine_) {
+        nextOperation_->ProcessLine(line);
+    } else if (!nextOperation_ && line != previousLine_) {
+        std::cout << line << std::endl;
+    }
+    previousLine_ = line;
 }
 
 void UniqOperation::HandleEndOfInput() {
-    uniqBuffer_.erase(std::unique(uniqBuffer_.begin(), uniqBuffer_.end()),
-    uniqBuffer_.end());
-
-    for (const auto& line : uniqBuffer_) {
-        if (nextOperation_) {
-            nextOperation_->ProcessLine(line);
-        } else {
-            std::cout << line << std::endl;
-        }
-    }
-
     if (nextOperation_) {
         nextOperation_->HandleEndOfInput();
     }

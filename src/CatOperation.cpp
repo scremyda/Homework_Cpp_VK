@@ -1,7 +1,9 @@
 #include "CatOperation.h"
+#include "UniqOperation.h"
 
 #include <string>
 #include <iostream>
+#include <typeinfo>
 
 
 CatOperation::CatOperation(const std::string& fileName)
@@ -19,21 +21,21 @@ CatOperation::~CatOperation() {
 }
 
 void CatOperation::ProcessLine(const std::string& line) {
-    catBuffer_.push_back(line);
+    if (nextOperation_) {
+        nextOperation_->ProcessLine(line);
+    } else {
+        std::cout << line << std::endl;
+    }
 }
 
 void CatOperation::HandleEndOfInput() {
     std::string fileLine;
 
     while (std::getline(inputStream_, fileLine)) {
-        ProcessLine(fileLine);
-    }
-
-    for (const auto& line : catBuffer_) {
         if (nextOperation_) {
-            nextOperation_->ProcessLine(line);
+            nextOperation_->ProcessLine(fileLine);
         } else {
-            std::cout << line << std::endl;
+            std::cout << fileLine << std::endl;
         }
     }
     if (nextOperation_) {

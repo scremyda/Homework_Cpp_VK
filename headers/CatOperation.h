@@ -21,5 +21,4 @@ class CatOperation : public IOperation {
     std::string fileName_;
     std::shared_ptr<IOperation> nextOperation_;
     std::ifstream inputStream_;
-    std::vector<std::string> catBuffer_;
 };

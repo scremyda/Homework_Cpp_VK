@@ -2,8 +2,6 @@
 
 #include "IOperation.h"
 
-#include <vector>
-
 
 class UniqOperation: public IOperation {
  public:
@@ -18,5 +16,5 @@ class UniqOperation: public IOperation {
 
  private:
     std::shared_ptr<IOperation> nextOperation_;
-    std::vector<std::string> uniqBuffer_;
+    std::string previousLine_;
 };
