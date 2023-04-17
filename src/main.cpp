@@ -1,7 +1,3 @@
-#include "IOperation.hpp"
-#include "EchoOperation.hpp"
-#include "CatOperation.hpp"
-#include "UniqOperation.hpp"
 #include "Parser.hpp"
 #include "Conveyor.hpp"
 
